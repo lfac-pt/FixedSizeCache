@@ -1,6 +1,6 @@
 // FixedSizeCache v0.0.1
 // (c) 2013 Luís Cardoso <luis.cardoso@feedzai.com>
-// TreeModel may be freely distributed under the MIT license.
+// FixedSizeCache may be freely distributed under the MIT license.
 
 (function () {
     /* global define */
