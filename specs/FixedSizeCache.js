@@ -84,7 +84,7 @@ var expect = chai.expect;
             it("should drop the oldest keys when more space is necessary", function () {
                 var cache;
 
-                cache = new Cache({
+                cache = new FixedSizeCache({
                     settings: {
                         maxCacheSize : BASELINE_CACHE_SIZE - 45
                     }
@@ -276,6 +276,33 @@ var expect = chai.expect;
                 });
 
                 expect(cache.getCacheMaximumCapacityInBytes()).to.equal(1024);
+            });
+        });
+    });
+
+    describe("utils", function () {
+        describe("map", function () {
+            var map, double;
+
+            map = FixedSizeCache._utils.map;
+            double = function (x) {
+                return x * 2;
+            };
+
+            it("should map over an array", function () {
+                expect(map([1, 2], double)).to.deep.equal([2, 4]);
+            });
+
+            it("should map over an object", function () {
+                expect(map({a: 1, b: 2}, double)).to.deep.equal({a: 2, b: 4});
+            });
+
+            it("should return a new object", function () {
+                var array;
+
+                array = [1, 2];
+
+                expect(map(array, double)).not.to.equal(array);
             });
         });
     });

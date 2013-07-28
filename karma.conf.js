@@ -14,6 +14,7 @@ module.exports = function(karma) {
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/chai/chai.js',
       'FixedSizeCache.js',
       'specs/*.js'
     ],

@@ -247,6 +247,8 @@
         return FixedSizeCache;
     }(utils.map, utils.Immutable, utils.isEmpty, utils.not, utils.isObject, utils.isArray, utils.isNumber));
 
+    FixedSizeCache._utils = utils;
+
     if (typeof exports === 'object') {
         module.exports = FixedSizeCache;
     } else if (typeof define === 'function' && define.amd) {
