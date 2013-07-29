@@ -9,8 +9,6 @@
     var utils, FixedSizeCache;
 
     utils = (function () {
-        "use strict";
-
         return {
             map : function (iterable, iterator) {
                 var resultIterable, keys, i, key;
@@ -87,8 +85,6 @@
     }());
 
     FixedSizeCache = (function (map, Immutable, isEmpty, not, isObject, isArray, isNumber) {
-        "use strict";
-
         var FixedSizeCache;
 
         /**
