@@ -171,6 +171,14 @@
                 return _state.storage[key];
             },
             /**
+             * Returns a copy of the entire cache.
+             * @param {Object} _state PRIVATE - The current state of the cache
+             * @returns {Object}
+             */
+            all : function (_state) {
+                return _state.storage;
+            },
+            /**
              * Returns true if for the key there is an associated value.
              * @param {Object} _state PRIVATE - The current state of the cache
              * @param {String} key
