@@ -1,4 +1,7 @@
 FixedSizeCache
 ==============
 
-An in memory, immutable, isolated, size limited cache for JavaScript plain objects
+An in memory, immutable, isolated, size limited cache for JavaScript plain objects.
+
+## Licence
+MIT
