@@ -1,11 +1,6 @@
 const FixedSizeCache = require("../index");
 
 describe("FixedSizeCache", function () {
-    var BASELINE_CACHE_SIZE, _TEST_CACHE;
-
-    _TEST_CACHE = new FixedSizeCache();
-    BASELINE_CACHE_SIZE = _TEST_CACHE.getCacheMaximumCapacityInBytes() - _TEST_CACHE.getRemainingBytes();
-
     describe("FixedSizeCache", function () {
         it("should allow to define the max cache size in bytes", function () {
             var cache;
@@ -35,21 +30,12 @@ describe("FixedSizeCache", function () {
             }).not.toThrowError(Error);
         });
 
-        it("should return a new cache instance", function () {
-            var cache;
-
-            cache = new FixedSizeCache();
-
-            expect(cache.set("bob", {name: "bob"})).toBeInstanceOf(FixedSizeCache);
-            expect(cache.set("bob", {name: "bob"})).not.toBe(cache);
-        });
-
         it("should drop old keys if the cache is full", function () {
             var cache;
 
             cache = new FixedSizeCache({
                 settings : {
-                    maxCacheSize : BASELINE_CACHE_SIZE - 50
+                    maxCacheSizeBytes : 6
                 }
             });
 
@@ -68,7 +54,7 @@ describe("FixedSizeCache", function () {
 
             cache = new FixedSizeCache({
                 settings: {
-                    maxCacheSize : BASELINE_CACHE_SIZE - 45
+                    maxCacheSizeBytes : 12
                 }
             });
 
@@ -94,7 +80,7 @@ describe("FixedSizeCache", function () {
 
             cache = new FixedSizeCache({
                 settings: {
-                    maxCacheSize : BASELINE_CACHE_SIZE - 50
+                    maxCacheSizeBytes : 12
                 }
             });
 
@@ -128,7 +114,7 @@ describe("FixedSizeCache", function () {
 
             cache = new FixedSizeCache({
                 settings: {
-                    maxCacheSize : BASELINE_CACHE_SIZE - 45
+                    maxCacheSizeBytes : 12
                 }
             });
 
@@ -238,7 +224,7 @@ describe("FixedSizeCache", function () {
     });
 
     describe("getRemainingBytes", function () {
-        it("should return the number of free bytes remaining in the cache", function () {
+        it("should return the number of free bytes remaining in the cache when it is empty", function () {
             var cache;
 
             cache = new FixedSizeCache({
@@ -247,22 +233,21 @@ describe("FixedSizeCache", function () {
                 }
             });
 
-            //Even an empty cache takes to space
-            expect(cache.getRemainingBytes()).toBe(906);
+            expect(cache.getRemainingBytes()).toBe(1024);
         });
-    });
 
-    describe("getCacheMaximumCapacityInBytes", function () {
-        it("should return the maximum cache capacity in bytes", function () {
+        it("should return the number of free bytes remaining in the cache when it is not empty", function () {
             var cache;
 
             cache = new FixedSizeCache({
                 settings: {
-                    maxCacheSize : 512
+                    maxCacheSizeBytes : 1024
                 }
             });
+            cache.set("bob", "123");
 
-            expect(cache.getCacheMaximumCapacityInBytes()).toBe(1024);
+            // It's 10 bytes because the quotes of the string also get counted due to the JSON.stringify
+            expect(cache.getRemainingBytes()).toBe(1014);
         });
     });
 });
