@@ -19,18 +19,6 @@ describe("FixedSizeCache", function () {
             expect(cache.getCacheMaximumCapacityInBytes()).toBe(1024);
         });
 
-        it("should allow to define the max cache size in chars", function () {
-            var cache;
-
-            cache = new FixedSizeCache({
-                settings : {
-                    maxCacheSize : 512
-                }
-            });
-
-            expect(cache.getCacheMaximumCapacityInBytes()).toBe(1024);
-        });
-
         it("should return an instance of FixedSizeCache", function () {
             expect(new FixedSizeCache()).toBeInstanceOf(FixedSizeCache);
         });
@@ -246,21 +234,6 @@ describe("FixedSizeCache", function () {
             cache = cache.remove("bob");
 
             expect(cache.has("bob")).toBe(false);
-        });
-    });
-
-    describe("getRemainingFraction", function () {
-        it("should returning the size of the fraction of the cache that is free", function () {
-            var cache;
-
-            cache = new FixedSizeCache({
-                settings: {
-                    maxCacheSizeBytes : 1024
-                }
-            });
-
-            //Even an empty cache takes to space
-            expect(cache.getRemainingFraction()).toBe(1 - (906 / 1024));
         });
     });
 

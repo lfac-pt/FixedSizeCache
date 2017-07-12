@@ -1,5 +1,6 @@
 const Benchmark = require('benchmark');
 const FixedSizeCache = require("../index");
+const FixedSizeCache2 = require("../FixedCache2");
 const suite = new Benchmark.Suite;
 
 function buildObject(size) {
@@ -46,6 +47,29 @@ suite
 		cache = cache.set("bob" + i, twoTousandSmallObjects[i]);
 	}
 })
+
+.add('add 5 large equal items V2', function() {
+	let cache = new FixedSizeCache2();
+
+	for (let i = 0; i < 5; i++) {
+		cache.set("bob" + i, largeObject);
+	}
+})
+.add('add 5 large different items V2', function() {
+	let cache = new FixedSizeCache2();
+
+	for (let i = 0; i < 5; i++) {
+		cache.set("bob" + i, twentyLargeObjects[i]);
+	}
+})
+.add('add 20 small different items V2', function() {
+	let cache = new FixedSizeCache2();
+
+	for (let i = 0; i < 200; i++) {
+		cache.set("bob" + i, twoTousandSmallObjects[i]);
+	}
+})
+
 .on('cycle', function(event) {
   console.log(String(event.target));
 })
