@@ -1,4 +1,4 @@
-let FixedSizeCache = require("../index");
+const FixedSizeCache = require("../index");
 
 describe("FixedSizeCache", function () {
     var BASELINE_CACHE_SIZE, _TEST_CACHE;

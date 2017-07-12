@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "FixedSizeCache ==============",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "benchmark": "^2.1.4"
+  },
   "devDependencies": {
     "jest": "^20.0.4"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "bench": "node benchmarks/index.js"
   },
   "repository": {
     "type": "git",
