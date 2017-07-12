@@ -2,7 +2,7 @@
   "name": "fixed-size-cache",
   "version": "1.0.0",
   "description": "FixedSizeCache ==============",
-  "main": "FixedSizeCache.js",
+  "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "jest": "^20.0.4"
