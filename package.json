@@ -1,0 +1,28 @@
+{
+  "name": "fixed-size-cache",
+  "version": "1.0.0",
+  "description": "FixedSizeCache ==============",
+  "main": "FixedSizeCache.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^20.0.4"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfac-pt/FixedSizeCache.git"
+  },
+  "keywords": [
+    "Cache",
+    "Imutabble",
+    "LRU"
+  ],
+  "author": "Luís Cardoso <me@lfac.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lfac-pt/FixedSizeCache/issues"
+  },
+  "homepage": "https://github.com/lfac-pt/FixedSizeCache#readme"
+}
