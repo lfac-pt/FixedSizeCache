@@ -8,6 +8,8 @@ function buildObject(size) {
 	for (let i = 0; i < size; i++) {
 		largeObject["key" + i] = Math.random();
 	}
+
+	return largeObject;
 }
 
 // Test objects
@@ -22,20 +24,25 @@ for (let i = 0; i < 2000; i++) {
 }
 
 // Actual tests
-let cache = new FixedSizeCache();
 suite
-.add('add 20 large equal items', function() {
-	for (let i = 0; i < 20; i++) {
+.add('add 5 large equal items', function() {
+	let cache = new FixedSizeCache();
+
+	for (let i = 0; i < 5; i++) {
 		cache = cache.set("bob" + i, largeObject);
 	}
 })
-.add('add 20 large different items', function() {
-	for (let i = 0; i < 20; i++) {
+.add('add 5 large different items', function() {
+	let cache = new FixedSizeCache();
+
+	for (let i = 0; i < 5; i++) {
 		cache = cache.set("bob" + i, twentyLargeObjects[i]);
 	}
 })
-.add('add 2000 small different items', function() {
-	for (let i = 0; i < 2000; i++) {
+.add('add 20 small different items', function() {
+	let cache = new FixedSizeCache();
+
+	for (let i = 0; i < 200; i++) {
 		cache = cache.set("bob" + i, twoTousandSmallObjects[i]);
 	}
 })

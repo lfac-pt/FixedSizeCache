@@ -160,6 +160,26 @@ describe("FixedSizeCache", function () {
             expect(cache.has("b")).toBe(false);
             expect(cache.has("c")).toBe(true);
         });
+
+        it("should set a large object", function () {
+            var cache;
+
+            function buildObject(size) {
+                const largeObject = {};
+
+                for (let i = 0; i < size; i++) {
+                    largeObject["key" + i] = Math.random();
+                }
+
+                return largeObject;
+            }
+
+            cache = new FixedSizeCache({});
+
+            cache = cache.set("kakaka", buildObject(10000));
+
+            expect(cache.has("kakaka")).toBe(true);
+        })
     });
 
     describe("get", function () {
