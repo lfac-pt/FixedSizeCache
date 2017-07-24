@@ -13,8 +13,6 @@ const FixedSizeCache = function (options) {
 			return json.length * 2; //Each char occupies two bytes.
 		}
 	});
-
-	this._state = new Map();
 }
 
 /**
